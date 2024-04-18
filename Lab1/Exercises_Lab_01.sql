@@ -7,7 +7,7 @@ SELECT * FROM course WHERE dept_name = 'Comp. Sci.' AND credits = 3;
 SELECT * FROM course;
 
 -- Q 1.c. Find the highest salary of any instructor.
-SELECT MAX(salary) FROM instructor;
+SELECT DISTINCT MAX(salary) FROM instructor;
 
 -- Q 1.d. Find all instructors earning the highest salary.
 SELECT name FROM instructor WHERE salary = (SELECT MAX(salary) FROM instructor);
