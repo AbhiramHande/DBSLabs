@@ -4,7 +4,10 @@ USE university;
 SELECT * FROM course WHERE dept_name = 'Comp. Sci.' AND credits = 3;
 
 -- Q 1.b. Find the IDs of all students who were taught by an instructor named Dale (no duplicates).
-SELECT * FROM course;
+SELECT DISTINCT T.student_id FROM takes T 
+JOIN teaches S ON T.course_id = S.course_id AND T.sec_id = S.sec_id
+AND T.semester = S.semester AND T.year = S.year
+JOIN instructor I ON S.ID = I.ID WHERE I.name = 'Dale';
 
 -- Q 1.c. Find the highest salary of any instructor.
 SELECT DISTINCT MAX(salary) FROM instructor;
