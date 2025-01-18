@@ -50,4 +50,9 @@ DELETE FROM course WHERE course_id = 'CS-001';
 
 -- Q 2.f. Delete all takes tuples corresponding to any section of any course with the word “Geology” as a part of the title
 --  	  Ignore case when matching the word with the title.
--- TODO
+DELETE FROM takes
+WHERE course_id IN (
+    SELECT course_id
+    FROM course
+    WHERE LOWER(title) LIKE '%geology%'
+);
