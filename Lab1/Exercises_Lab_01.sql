@@ -18,6 +18,6 @@ UPDATE instructor SET salary = 1.1 * salary WHERE dept_name = 'Comp. Sci.';
 SELECT * FROM student;
 
 -- Q 2.b. Insert every student whose tot cred attribute is greater than 100 as an instructor in the same department, with a salary of $30,000.
--- TODO
-INSERT INTO instructor (id, name, dept_name, salary) SELECT 
-id, name, dept_name, 30000 AS salary FROM student WHERE tot_cred >= 100;
+INSERT INTO instructor (id, name, dept_name, salary)
+SELECT id, name, dept_name, 30000
+FROM student WHERE tot_cred >= 100 AND id NOT IN (SELECT id FROM instructor);
