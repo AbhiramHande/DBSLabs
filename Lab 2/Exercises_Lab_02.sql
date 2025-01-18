@@ -19,7 +19,11 @@ SELECT dept_name, MAX(salary) AS max_salary
 FROM instructor GROUP BY dept_name;
 
 -- Q 1.d. Find the lowest, across all departments, of the per-department maximum salary computed by the preceding query.
--- TODO
+SELECT MIN(max_salary) AS lowest_max_salary
+FROM (
+    SELECT dept_name, MAX(salary) AS max_salary
+    FROM instructor GROUP BY dept_name
+) AS dept_max_salaries;
 
 -- Ex.2 Write the SQL statements using the university schema to perform the following operations:
 -- Q 2.a. Create a new course “CS-001”, titled “Weekly Seminar”, with 2 credits.
